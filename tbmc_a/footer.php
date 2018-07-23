@@ -15,15 +15,39 @@
 	</div><!-- #content -->
 
 	<footer class="footer">
-
+<!--
 		<div class="footer__menu">
 			<a class="footer__menu--item" href="#">Privacy & Cookie Policy</a>
 			<a class="footer__menu--item" href="#">Terms & Conditions</a>
 			<a class="footer__menu--item" href="#">Our Values</a>
 			<a class="footer__menu--item" href="#">Online Brochure</a>
 		</div>
+	-->
+
+		<div class="footer__menu">
+<?php
+
+	$menuLocations = get_nav_menu_locations();
+	$menuID = '9';
+	$primaryNav = wp_get_nav_menu_items($menuID);
+
+	foreach ( $primaryNav as $navItem ) {
+
+    	echo '<a class="footer__menu--item" href="'.$navItem->url.'" title="'.$navItem->title.'">'.$navItem->title.'</a>';
+
+	}
+
+?>
+		</div>
+
 		<div class="footer__menu--social">
-			<img src="<?php echo THEME_IMG_PATH; ?>//soc1.jpg"><img src="<?php echo THEME_IMG_PATH; ?>//soc2.jpg"><img src="<?php echo THEME_IMG_PATH; ?>//soc3.jpg"><img src="<?php echo THEME_IMG_PATH; ?>//soc4.jpg">
+			<a href="https://www.instagram.com/brandedmerchandisecompany/"><img src="<?php echo THEME_IMG_PATH; ?>/soc1.svg"></a>
+			<a href="http://linkedin.com/in/natalie-hyams-5005ab4" alt="Natalie Hyams"><img src="<?php echo THEME_IMG_PATH; ?>/soc3.svg"></a>
+			<a href="http://linkedin.com/in/tanyel-akgul-736a754a" alt="Tanyel Akgul"><img src="<?php echo THEME_IMG_PATH; ?>/soc3.svg"></a>
+			<a href="mailto:sales@brandedmerchandise.co.uk"><img src="<?php echo THEME_IMG_PATH; ?>/soc4.svg"></a>
+		</div>
+		<div class="footer__menu--spacedtag">
+			Website by <a href="http://spaced.digital">Spaced</a>
 		</div>
 
 	</footer>

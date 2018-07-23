@@ -34,16 +34,32 @@
 
 	<header class="header__strip">
 		<div class="header__logo">
-			<a href="<?php get_home_url() ?>"><img src="<?php echo THEME_IMG_PATH; ?>/logo.jpg"></a>
+			<a href="<?php echo get_site_url(); ?>"><img src="<?php echo THEME_IMG_PATH; ?>/logo.svg" class="header__logo-img"></a>
 		</div>
 
 		<div class="header__menu">
-			<a href="#" class="header__menu-item">Home</a>
+			<!--<a href="#" class="header__menu-item">Home</a>
 			<a href="#" class="header__menu-item">About</a>
 			<a href="#" class="header__menu-item">Services</a>
 			<a href="#" class="header__menu-item">Our&nbsp;Work</a>	
 			<a href="#" class="header__menu-item">Categories</a>
-			<a href="#" class="header__menu-item">Contact</a>							
+			<a href="#" class="header__menu-item">Contact</a>-->
+
+			<?php
+
+				$menuLocations = get_nav_menu_locations();
+				$menuID = '2';
+				$primaryNav = wp_get_nav_menu_items($menuID);
+
+				foreach ( $primaryNav as $navItem ) {
+
+			    	echo '<a class="header__menu-item" href="'.$navItem->url.'" title="'.$navItem->title.'">'.$navItem->title.'</a>';
+
+				}
+
+			?>
+
+
 		</div>
 		<div class="header__menu--burger">
 			<div class="header__menu--burgerselector">
@@ -51,12 +67,27 @@
 			</div>
 			<div class="header__menu--burgercontent deactive" id="header__menu--burgercontent">
 				<div class="header__menu--burgercontentinner">
+					<!--
 					<a href="#" class="header__menuburger-item">Home</a>
 					<a href="#" class="header__menuburger-item">About</a>
 					<a href="#" class="header__menuburger-item">Services</a>
 					<a href="#" class="header__menuburger-item">Our Work</a>	
 					<a href="#" class="header__menuburger-item">Categories</a>
 					<a href="#" class="header__menuburger-item">Contact</a>
+				-->
+				<?php
+
+					$menuLocations = get_nav_menu_locations();
+					$menuID = '2';
+					$primaryNav = wp_get_nav_menu_items($menuID);
+
+					foreach ( $primaryNav as $navItem ) {
+
+				    	echo '<a class="header__menuburger-item" href="'.$navItem->url.'" title="'.$navItem->title.'">'.$navItem->title.'</a>';
+
+					}
+
+				?>
 				</div>
 			</div>
 		</div>
